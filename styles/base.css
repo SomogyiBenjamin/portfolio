@@ -29,7 +29,7 @@ body{
 
 
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: auto;
     
 
 }
@@ -68,7 +68,7 @@ body{
     box-sizing: border-box;
 
 }
-a{
+span a{
   text-decoration: none;
   color: inherit;
   cursor: pointer;
@@ -80,13 +80,13 @@ a{
   align-items: center;
 }
 
-a:visited{
+span a:visited{
   color: inherit;
 }
 
-a:hover,
-a:active,
-a:focus{
+span a:hover,
+span a:active,
+span a:focus{
   text-decoration: none;
   color: inherit;
   outline: none;
@@ -184,7 +184,10 @@ img{
 
 
 }
-
+ #cikk{
+    color: var(--nameColor);
+    text-decoration: underline;
+ }
 
 .subSection{
 
@@ -276,12 +279,18 @@ img{
     padding: 20px;
     width: 70%;
 
+    position: relative;
+    z-index: 10;
+
+
     background-color: rgba(0, 0, 0, 0.232);
     backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px);
+
     border-radius: 24px;
     border: var(--generalBorder);
     box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.25);
-    
+
 }
 
 
@@ -310,6 +319,34 @@ img{
     height: 100%;
 }
 
+.year{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 0.75rem;
+}
+
+.year::before {
+  content: "";
+  display: inline-block;
+  width: clamp(4rem, 10vw, 8rem);
+  height: 2px;
+  width:25%;
+  background: linear-gradient(90deg, transparent, var(--lineColor), transparent);
+}
+
+
+.year::after {
+  content: "";
+  display: inline-block;
+  width: clamp(4rem, 10vw, 8rem);
+  height: 2px;
+  width:25%;
+  background: linear-gradient(90deg, transparent, var(--lineColor), transparent);
+}
 .image{
     
     width: 70%;
@@ -323,8 +360,20 @@ img{
 
 .school{
     color: var(--nameColor);
+    text-align: center;
 }
 
+.subjects{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    align-self: center;
+
+    gap: 10px;
+}
 
 .subjects span{
     display: inline-block;
@@ -352,8 +401,11 @@ section{
 
 .descriptText{
     font-size: 1.25rem;
-    text-align: justify !important;
+    text-align: left !important;
     padding: 5%;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
 
 }
 
@@ -507,6 +559,236 @@ section{
   font-style: normal;
 }
 
+/* Tablet: landscape ~ desktop, portrait ~ phone */
+@media only screen and (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
+
+  .header{
+    left: 20vw;
+    width: 80vw;
+    top: 1%;
+    height: 7vh;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .contentRight{
+    flex-direction: row;
+    gap: 12px;
+    padding: 8px;
+  }
+
+  .description, .imageContainer{
+    width: 50%;
+  }
+
+  .subSection{
+    width: 30%;
+    font-size: clamp(2rem, 2.5vw, 3rem);
+  }
+
+  .contactContainer{
+    width: 60vw;
+  }
+
+  .image{
+    width: 80%;
+  }
+
+  .carousel { width: 380px; height: 260px; }
+
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+    /* treat like mobile portrait */
+    .header{
+      display: flex;
+      position: fixed;
+      top: auto;
+      left: 49.5%;
+      bottom: max(0.75rem, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      width: 60vw;
+      height: auto;
+      min-height: 3.5rem;
+      padding: 0.6rem 0.7rem;
+      justify-content: space-around;
+      gap: clamp(0.35rem, 2.5vw, 0.8rem);
+      border-radius: 24px;
+      box-sizing: border-box;
+    }
+    .header span { 
+      gap:0px;
+      width: fit-content; 
+      flex: 0 1 auto; 
+      padding: 0.35rem; 
+    }
+
+    .container { 
+      background-position: 25%; 
+    }
+
+    .Me { 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      width: 80%; 
+      height: 15%; }
+
+    #name { 
+      font-size: 5rem; 
+    }
+    #titles { 
+      font-size: 2.5rem; 
+    }
+
+    .subSection { 
+      width: 40%; 
+      font-size: 2.5rem; 
+      padding: 16px; 
+      margin-top: 24px; 
+      margin-bottom: 24px; 
+    }
+
+    .contentRight { 
+      flex-direction: column; 
+      gap: 5vh; 
+      padding: 12px 0 16px; 
+      margin-bottom: 5vh;
+    }
+
+    .description, .imageContainer { 
+      width: 100%; 
+    }
+
+    .description { 
+      order: 1; 
+    }
+
+    .imageContainer { 
+      order: 2; 
+    }
+
+    .descriptionContent { 
+      width: 80%; 
+      padding: 16px; 
+    }
+
+
+    .descriptionContent div { 
+
+      text-align: center; 
+    }
+
+    .school{
+      hyphens: none;
+      text-align: center;
+    }
+
+    .descriptText { 
+      text-align: left; 
+      font-size: 2rem; 
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+
+    .subjects{
+      font-size: 2rem;
+    }
+
+    .subjects span{
+      font-size: 2rem;
+    }
+
+    .image { 
+      width: 80%;
+    }
+
+    .contactContainer{ 
+      width: 90%;
+    }
+
+    #contactForm input, #contactForm textarea { 
+      width: 250%; 
+      position: relative; 
+      left: -80%; 
+      font-size: 1.5rem;
+    }
+
+    #contactForm button { 
+      width: 100%; 
+      font-size: 2rem;
+    }
+
+    #contactText { 
+      width: 60%; 
+      font-size: 2rem; 
+      padding: 16px; 
+    }
+
+    .carousel-container { 
+      width: 100%; 
+    }
+    .carousel { 
+      width: min(100%, 400px); 
+      height: 220px; 
+    }
+
+    /* modal adjustments (same as mobile) */
+    .modal { 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch; 
+    }
+
+    .modal-content { 
+      width: calc(100% - 2rem); 
+      max-width: none; 
+      margin: 1rem auto; 
+      padding: 16px; 
+      border-radius: 12px; 
+      height: auto; 
+      max-height: calc(100vh - 2rem); 
+      box-sizing: border-box; 
+      background-color: transparent; 
+    }
+
+    .image-modal-content { 
+      width: calc(100% - 1rem); 
+      max-width: none; 
+      margin: 0.5rem auto; 
+      padding: 8px; 
+      border-radius: 12px; 
+      height: calc(100vh - 2rem); 
+      max-height: calc(100vh - 2rem); 
+    }
+
+    .image-modal-content .carousel_image { 
+      width: 100%; 
+      height: auto; 
+      max-height: calc(100vh - 8rem); 
+      object-fit: contain; 
+      object-position: top; 
+    }
+
+    .close { 
+      position: absolute; 
+      top: -10; 
+      right: 12px; 
+      z-index: 12000; 
+      background: var(--pillBg); 
+      border: var(--generalBorder); 
+      border-radius: 100px; 
+      padding: 6px 10px; 
+      color: var(--titlesColor); 
+      font-size: 1.6rem; 
+      font-weight: bold; 
+      cursor: pointer; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+    }
+
+}
+
+
+
 @media only screen and (max-width: 600px){
 
 
@@ -567,6 +849,7 @@ section{
         flex-direction: column;
         gap: 18px;
         padding: 12px 0 16px;
+        backdrop-filter: blur(8px);
     }
 
     .description,
@@ -580,7 +863,7 @@ section{
     }
     .subjects span{
 
-      font-size: 1.4rem;
+      font-size: 1.2rem;
 
     }
     .imageContainer {
@@ -594,13 +877,15 @@ section{
 
     .descriptionContent div{
       font-size: 1.3rem;
-      text-align: center;
+      text-align: left;
     }
 
     .descriptText{
-      text-align: center;
+      text-align: left;
       font-size: 1.5rem;
-
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
     }
 
     .image {
@@ -610,7 +895,7 @@ section{
 
     .contactContainer{
       width: 90%;
-      
+      backdrop-filter: blur(8px);
 
     }
 
@@ -639,6 +924,56 @@ section{
     .carousel {
         width: min(100%, 400px);
         height: 220px;
+    }
+
+    /* Mobile modal adjustments: make modals usable and scrollable on small screens */
+    .modal {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-content {
+      width: calc(100% - 2rem);
+      max-width: none;
+      margin: 1rem auto;
+      padding: 16px;
+      border-radius: 12px;
+      height: auto;
+      max-height: calc(100vh - 2rem);
+      box-sizing: border-box;
+    }
+
+    .image-modal-content {
+      width: calc(100% - 1rem);
+      max-width: none;
+      margin: 0.5rem auto;
+      padding: 8px;
+      border-radius: 12px;
+      height: calc(100vh - 2rem);
+      max-height: calc(100vh - 2rem);
+    }
+
+    .image-modal-content .carousel-container {
+      height: 100%;
+      width: 100%;
+    }
+
+    .image-modal-content .carousel_image {
+      width: 100%;
+      height: auto;
+      max-height: calc(100vh - 8rem);
+      object-fit: contain;
+      object-position: top;
+    }
+
+    .close {
+      position: relative;
+      left: auto !important;
+      right: 0;
+      top: 0;
+      margin-left: auto;
+      margin-right: 0;
+      transform: translateY(0);
     }
 }
 

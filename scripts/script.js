@@ -97,6 +97,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
       document.getElementById('modalMessage').innerText = "Az üzeneted sikeresen elküldted. Hamarosan kapcsolatba lépek veled.";
       document.getElementById('contactForm').reset();
       document.getElementById('thankYouModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
       document.querySelector("#sendBtn").classList.toggle("loader")
       document.querySelector("#btnText").classList.toggle("hideText")
       document.querySelector("#btnIcon").classList.toggle("hideText")
@@ -104,6 +105,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
       document.getElementById('modalTitle').innerText = "Hiba!";
       document.getElementById('modalMessage').innerText = "Hiba történt a küldés során. Kérlek, próbáld újra!";
       document.getElementById('thankYouModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
       document.querySelector("#sendBtn").classList.toggle("loader")
       document.querySelector("#btnText").classList.toggle("hideText")
       document.querySelector("#btnIcon").classList.toggle("hideText")
@@ -112,6 +114,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     document.getElementById('modalTitle').innerText = "Hiba!";
     document.getElementById('modalMessage').innerText = "Hálózati hiba történt. Ellenőrizd a kapcsolatot.";
     document.getElementById('thankYouModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
     document.querySelector("#sendBtn").classList.toggle("loader")
     document.querySelector("#btnText").classList.toggle("hideText")
     document.querySelector("#btnIcon").classList.toggle("hideText")
@@ -128,12 +131,14 @@ const closeBtn = document.querySelector('.close');
 if (closeBtn) {
   closeBtn.onclick = function() {
     modal.style.display = 'none';
+    document.body.style.overflow = '';
   }
 }
 
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = 'none';
+    document.body.style.overflow = '';
   }
 }
 
@@ -143,6 +148,7 @@ const imageModalCloseBtn = imageModal.querySelector('.close');
 if (imageModalCloseBtn) {
   imageModalCloseBtn.onclick = function() {
     imageModal.style.display = 'none';
+    document.body.style.overflow = '';
     if (window.modalRotationInterval) {
       clearInterval(window.modalRotationInterval);
       window.modalRotationInterval = null;
@@ -153,6 +159,7 @@ if (imageModalCloseBtn) {
 window.addEventListener('click', function(event) {
   if (event.target == imageModal) {
     imageModal.style.display = 'none';
+    document.body.style.overflow = '';
     if (window.modalRotationInterval) {
       clearInterval(window.modalRotationInterval);
       window.modalRotationInterval = null;
@@ -160,78 +167,111 @@ window.addEventListener('click', function(event) {
   }
 });
 
-document.querySelectorAll('.carousel_image').forEach((img) => {
-  img.style.cursor = 'pointer';
-  img.addEventListener('click', function() {
-    const parentCarousel = img.closest('ul.carousel');
-    const slides = parentCarousel.querySelectorAll('.carousel__slide');
-    const inputs = parentCarousel.querySelectorAll('.carousel__activator');
-    const slideCount = slides.length;
-    
-    let checkedIndex = 0;
-    inputs.forEach((input, i) => {
-      if (input.checked) {
-        checkedIndex = i;
+(function() {
+  const imgs = Array.from(document.querySelectorAll('.carousel_image'));
+
+  function createHandler(img) {
+    return function() {
+      const parentCarousel = img.closest('ul.carousel');
+      const slides = parentCarousel.querySelectorAll('.carousel__slide');
+      const inputs = parentCarousel.querySelectorAll('.carousel__activator');
+      const slideCount = slides.length;
+
+      let checkedIndex = 0;
+      inputs.forEach((input, i) => {
+        if (input.checked) {
+          checkedIndex = i;
+        }
+      });
+
+      const modalCarousel = document.getElementById('modalCarousel');
+
+      const existingSlides = modalCarousel.querySelectorAll('.carousel__slide');
+      existingSlides.forEach(slide => slide.remove());
+
+      const existingInputs = modalCarousel.querySelectorAll('.carousel__activator');
+      existingInputs.forEach(input => input.remove());
+
+      const existingIndicators = modalCarousel.querySelector('.carousel__indicators');
+      if (existingIndicators) existingIndicators.remove();
+
+      slides.forEach((slide, index) => {
+        const newInput = document.createElement('input');
+        newInput.className = 'carousel__activator';
+        newInput.type = 'radio';
+        newInput.id = `modal_${index}`;
+        newInput.name = 'carouselModal';
+        if (index === checkedIndex) newInput.checked = true;
+        modalCarousel.appendChild(newInput);
+      });
+
+      slides.forEach((slide, index) => {
+        const newSlide = document.createElement('li');
+        newSlide.className = 'carousel__slide';
+        const srcImg = slide.querySelector('img');
+        if (srcImg) {
+          const imgClone = srcImg.cloneNode(true);
+          newSlide.appendChild(imgClone);
+        }
+        modalCarousel.appendChild(newSlide);
+      });
+
+      const indicatorsDiv = document.createElement('div');
+      indicatorsDiv.className = 'carousel__indicators';
+      for (let i = 0; i < slideCount; i++) {
+        const label = document.createElement('label');
+        label.className = 'carousel__indicator';
+        label.htmlFor = `modal_${i}`;
+        indicatorsDiv.appendChild(label);
+      }
+      modalCarousel.appendChild(indicatorsDiv);
+
+      imageModal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+
+      const newModalInputs = modalCarousel.querySelectorAll(`input[name="carouselModal"]`);
+      let currentModalIndex = checkedIndex;
+
+      if (window.modalRotationInterval) {
+        clearInterval(window.modalRotationInterval);
+      }
+
+      window.modalRotationInterval = setInterval(() => {
+        currentModalIndex = (currentModalIndex + 1) % newModalInputs.length;
+        newModalInputs[currentModalIndex].checked = true;
+      }, 10000);
+    };
+  }
+
+  function setupCarouselImageHandlers() {
+    const isMobile = window.matchMedia('(max-width:600px)').matches;
+    imgs.forEach(img => {
+      // remove existing handler if present
+      if (img._carouselClickHandler) {
+        img.removeEventListener('click', img._carouselClickHandler);
+        img._carouselClickHandler = null;
+      }
+
+      img.style.cursor = isMobile ? 'default' : 'pointer';
+
+      if (!isMobile) {
+        img._carouselClickHandler = createHandler(img);
+        img.addEventListener('click', img._carouselClickHandler);
       }
     });
-    
-    const modalCarousel = document.getElementById('modalCarousel');
-    
-    const existingSlides = modalCarousel.querySelectorAll('.carousel__slide');
-    existingSlides.forEach(slide => slide.remove());
-    
-    const existingInputs = modalCarousel.querySelectorAll('.carousel__activator');
-    existingInputs.forEach(input => input.remove());
-    
-    const existingIndicators = modalCarousel.querySelector('.carousel__indicators');
-    if (existingIndicators) existingIndicators.remove();
-    
-    slides.forEach((slide, index) => {
-      const newInput = document.createElement('input');
-      newInput.className = 'carousel__activator';
-      newInput.type = 'radio';
-      newInput.id = `modal_${index}`;
-      newInput.name = 'carouselModal';
-      if (index === checkedIndex) newInput.checked = true;
-      modalCarousel.appendChild(newInput);
-    });
-    
-    slides.forEach((slide, index) => {
-      const newSlide = document.createElement('li');
-      newSlide.className = 'carousel__slide';
-      const srcImg = slide.querySelector('img');
-      if (srcImg) {
-        const imgClone = srcImg.cloneNode(true);
-        newSlide.appendChild(imgClone);
-      }
-      modalCarousel.appendChild(newSlide);
-    });
-    
-    const indicatorsDiv = document.createElement('div');
-    indicatorsDiv.className = 'carousel__indicators';
-    for (let i = 0; i < slideCount; i++) {
-      const label = document.createElement('label');
-      label.className = 'carousel__indicator';
-      label.htmlFor = `modal_${i}`;
-      indicatorsDiv.appendChild(label);
-    }
-    modalCarousel.appendChild(indicatorsDiv);
-    
-    imageModal.style.display = 'block';
-    
-    const newModalInputs = modalCarousel.querySelectorAll(`input[name="carouselModal"]`);
-    let currentModalIndex = checkedIndex;
-    
-    if (window.modalRotationInterval) {
-      clearInterval(window.modalRotationInterval);
-    }
-    
-    window.modalRotationInterval = setInterval(() => {
-      currentModalIndex = (currentModalIndex + 1) % newModalInputs.length;
-      newModalInputs[currentModalIndex].checked = true;
-    }, 10000);
-  });
-});
+  }
+
+  const mq = window.matchMedia('(max-width:600px)');
+  if (mq.addEventListener) {
+    mq.addEventListener('change', setupCarouselImageHandlers);
+  } else if (mq.addListener) {
+    mq.addListener(setupCarouselImageHandlers);
+  }
+
+  window.addEventListener('resize', setupCarouselImageHandlers);
+
+  setupCarouselImageHandlers();
+})();
 
 
 const observer = new IntersectionObserver((entries) => {

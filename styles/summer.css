@@ -12,4 +12,6 @@
     --pillTextColor: rgb(0, 255, 195);
 
     --loaderColor:no-repeat radial-gradient(farthest-side,#14f07b 94%,#0d35e900);
+
+    --lineColor: rgba(0, 255, 195, 0.453);
 }

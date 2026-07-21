@@ -14,4 +14,8 @@
     --loaderColor:no-repeat radial-gradient(farthest-side,#14f07b 94%,#0d35e900);
 
     --lineColor: rgba(0, 255, 195, 0.453);
+
+    --zoom: cover;
+
+    --gradientBg: linear-gradient(to bottom, #64563695 0%, rgba(160, 133, 91, 0) 20%), var(--contentBg);
 }

@@ -1,0 +1,25 @@
+:root {
+    --openBg: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/Autumn2.gif);
+    --contentBg: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/AutumnGrass3.png);
+    --headerBg: rgba(168, 84, 20, 0.28);
+    --headerColor: rgb(252, 157, 24);
+    --inputBg: rgba(255, 228, 188, 0.25);
+    --selectedSectionBg: rgba(92, 49, 8, 0.35);
+    --nameColor: rgb(253, 180, 71);
+    --titlesColor: rgba(232, 157, 37, 0.781);
+    --lineColor: rgb(255, 220, 162);
+    --gradientBg: linear-gradient(to bottom, #c7972817 0%, rgba(160, 133, 91, 0) 20%), var(--contentBg);
+
+}
+
+@media (max-width: 600px) {
+    .container {
+        height: 100dvh;
+        min-height: 100svh;
+        background-size: cover;
+        background-position: center;
+
+    }
+}
+
+

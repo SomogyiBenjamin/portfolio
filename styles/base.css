@@ -8,6 +8,8 @@
     --selectedSectionBg: rgba(18, 17, 17, 0.29);
 }
 
+
+
 html {
     width: 100%;
     margin: 0;
@@ -175,7 +177,7 @@ img{
     align-items: stretch;
     min-height: 100vh;
 
-    background-image: linear-gradient(to bottom, #64563695 0%, rgba(160, 133, 91, 0) 20%), var(--contentBg);
+    background-image: var(--gradientBg);
 
 
     background-size: auto;
@@ -253,6 +255,7 @@ img{
     -webkit-hyphens: auto;
 
 
+
     animation-delay: 0.5s;
 
 }
@@ -285,7 +288,7 @@ img{
 
     background-color: rgba(0, 0, 0, 0.232);
     backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px) !important;
 
     border-radius: 24px;
     border: var(--generalBorder);
@@ -361,6 +364,7 @@ img{
 .school{
     color: var(--nameColor);
     text-align: center;
+    hyphens: none;
 }
 
 .subjects{
@@ -849,7 +853,6 @@ section{
         flex-direction: column;
         gap: 18px;
         padding: 12px 0 16px;
-        backdrop-filter: blur(8px);
     }
 
     .description,

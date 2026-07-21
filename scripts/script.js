@@ -1,5 +1,59 @@
 
+const seasonalStylesheetPath = {
+    spring: 'styles/spring.css',
+    summer: 'styles/summer.css',
+    autumn: 'styles/autumn.css',
+    winter: 'styles/winter.css'
+};
+
+function getCurrentSeason(date = new Date()) {
+    const month = date.getMonth() + 1;
+
+    return 'autumn'
+    if (month >= 3 && month <= 5) {
+        return 'spring';
+    }
+
+    if (month >= 6 && month <= 8) {
+        return 'summer';
+    }
+
+    if (month >= 9 && month <= 11) {
+        return 'autumn';
+    }
+
+    return 'winter';
+    
+}
+
+function loadSeasonalStylesheet(season = getCurrentSeason()) {
+    const existingLink = document.querySelector('link[data-season-theme]');
+    if (existingLink) {
+        existingLink.remove();
+    }
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = seasonalStylesheetPath[season] || seasonalStylesheetPath.summer;
+    link.setAttribute('data-season-theme', 'true');
+    document.head.appendChild(link);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    loadSeasonalStylesheet(getCurrentSeason());
+    
+    setTimeout(() => {
+      document.querySelectorAll('.contentRight').forEach((element) => {
+              element.addEventListener('animationend', () => {
+                  element.classList.remove('animate__animated');
+                  element.style.animation = 'none';
+                  element.style.transform = 'none';
+              });
+          });
+
+
+    }, 1000);
+    
     const carouselNames = new Set();
     document.querySelectorAll('.carousel__activator').forEach(input => {
         carouselNames.add(input.name);

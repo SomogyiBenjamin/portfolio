@@ -1,0 +1,10 @@
+:root {
+    --openBg: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(../images/spring.jpg);
+    --contentBg: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(../images/sandy2.png);
+    --headerBg: rgba(92, 191, 255, 0.24);
+    --headerColor: rgb(216, 243, 255);
+    --inputBg: rgba(216, 243, 255, 0.25);
+    --selectedSectionBg: rgba(34, 90, 138, 0.35);
+    --nameColor: rgb(128, 224, 255);
+    --titlesColor: rgb(200, 241, 255);
+}

@@ -1,10 +1,27 @@
 :root {
-    --openBg: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/winter.jpg);
-    --contentBg: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/sandy2.png);
-    --headerBg: rgba(35, 70, 120, 0.3);
-    --headerColor: rgb(220, 240, 255);
+    --openBg: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/WinterBg2.gif);
+    --contentBg: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/SnowBg.jpg);
+    --gradientBg: linear-gradient(to bottom, #c7972817 0%, rgba(160, 133, 91, 0) 20%), var(--contentBg);
+    
+    --headerBg: rgba(55, 110, 188, 0.3);
+    --headerColor: rgb(145, 201, 244);
+    
     --inputBg: rgba(220, 240, 255, 0.25);
     --selectedSectionBg: rgba(12, 34, 67, 0.4);
-    --nameColor: rgb(194, 228, 255);
-    --titlesColor: rgb(226, 243, 255);
+
+    --nameColor: rgb(34, 150, 245);
+    --titlesColor: rgb(5, 113, 191);
+
+    --lineColor: rgba(56, 176, 251, 0.453);
+
+
+}
+
+
+.content{
+
+    background-repeat: repeat;
+    background-color: #92a9f6;
+    background-blend-mode: multiply;
+
 }

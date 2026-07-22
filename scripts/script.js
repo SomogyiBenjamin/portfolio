@@ -9,7 +9,7 @@ const seasonalStylesheetPath = {
 function getCurrentSeason(date = new Date()) {
     const month = date.getMonth() + 1;
 
-    return 'autumn'
+    return 'spring'
     if (month >= 3 && month <= 5) {
         return 'spring';
     }

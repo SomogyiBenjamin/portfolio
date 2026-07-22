@@ -1,6 +1,6 @@
 :root {
     --openBg: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/Autumn2.gif);
-    --contentBg: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/AutumnGrass3.png);
+    --contentBg: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/leafyBg.jpg);
     --headerBg: rgba(168, 84, 20, 0.28);
     --headerColor: rgb(252, 157, 24);
     --inputBg: rgba(255, 228, 188, 0.25);
@@ -10,6 +10,12 @@
     --lineColor: rgb(255, 220, 162);
     --gradientBg: linear-gradient(to bottom, #c7972817 0%, rgba(160, 133, 91, 0) 20%), var(--contentBg);
 
+}
+
+.content{
+    background-repeat: repeat;
+    background-color: #ffa30f;
+    background-blend-mode: multiply;
 }
 
 @media (max-width: 600px) {

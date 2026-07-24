@@ -9,7 +9,6 @@ const seasonalStylesheetPath = {
 function getCurrentSeason(date = new Date()) {
     const month = date.getMonth() + 1;
 
-    return 'spring'
     if (month >= 3 && month <= 5) {
         return 'spring';
     }
@@ -344,3 +343,37 @@ hiddenElements.forEach((el) => observer.observe(el));
 
 const hiddenElements2 = document.querySelectorAll('.contactContainer');
 hiddenElements2.forEach((el) => observer.observe(el));
+
+
+
+
+let isScrolling = false;
+
+window.addEventListener('wheel', (e) => {
+  // Prevent the browser's default scrolling behavior
+  e.preventDefault();
+
+  // If a scroll is already in progress, ignore further wheel events
+  if (isScrolling) return;
+
+  // Lock the scrolling
+  isScrolling = true;
+
+  // Determine direction (positive deltaY is scrolling down, negative is up)
+  const direction = e.deltaY > 0 ? 1 : -1;
+
+  // window.innerHeight is the JavaScript equivalent of 100vh in CSS
+  const scrollDistance = window.innerHeight;
+
+  // Perform the scroll
+  window.scrollBy({
+    top: direction * scrollDistance,
+    left: 0,
+    behavior: 'smooth' // Creates a smooth gliding animation
+  });
+
+  setTimeout(() => {
+    isScrolling = false;
+  }, 800); 
+
+}, { passive: false });

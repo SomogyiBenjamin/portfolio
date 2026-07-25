@@ -348,32 +348,58 @@ hiddenElements2.forEach((el) => observer.observe(el));
 
 
 let isScrolling = false;
+let touchStartY = 0;
+let touchEndY = 0;
 
-window.addEventListener('wheel', (e) => {
-  // Prevent the browser's default scrolling behavior
-  e.preventDefault();
-
-  // If a scroll is already in progress, ignore further wheel events
+function performScroll(direction) {
   if (isScrolling) return;
-
-  // Lock the scrolling
   isScrolling = true;
 
-  // Determine direction (positive deltaY is scrolling down, negative is up)
-  const direction = e.deltaY > 0 ? 1 : -1;
-
-  // window.innerHeight is the JavaScript equivalent of 100vh in CSS
   const scrollDistance = window.innerHeight;
 
-  // Perform the scroll
   window.scrollBy({
     top: direction * scrollDistance,
     left: 0,
-    behavior: 'smooth' // Creates a smooth gliding animation
+    behavior: 'smooth'
   });
 
   setTimeout(() => {
     isScrolling = false;
-  }, 800); 
+  }, 800);
+}
 
+// 2. Egér görgő esemény
+window.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const direction = e.deltaY > 0 ? 1 : -1;
+  performScroll(direction);
 }, { passive: false });
+
+// 3. Érintőképernyő események (Mobil / Tablet)
+
+// Rögzítjük, hol ért a felhasználó a képernyőhöz
+window.addEventListener('touchstart', (e) => {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+// Megakadályozzuk a böngésző alapértelmezett mobilos görgetését
+window.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+}, { passive: false });
+
+// Rögzítjük, hol engedte el a képernyőt, és kiszámoljuk az irányt
+window.addEventListener('touchend', (e) => {
+  touchEndY = e.changedTouches[0].clientY;
+  
+  // Kiszámoljuk a húzás hosszát
+  const swipeDistance = touchStartY - touchEndY;
+  
+  // Minimum húzási távolság pixelben, hogy ne reagáljon sima kattintásra (tap)
+  const minSwipeDistance = 50; 
+
+  if (Math.abs(swipeDistance) > minSwipeDistance) {
+    // Ha pozitív az eredmény, akkor felfelé húzta az ujját (lefelé görgetés)
+    const direction = swipeDistance > 0 ? 1 : -1;
+    performScroll(direction);
+  }
+});

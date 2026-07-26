@@ -49,7 +49,7 @@ body{
 .header{
 
     display: flex;
-    gap: clamp(1rem, 2.5vw, 3rem);
+    gap: clamp(1rem, 2.5dvw, 3rem);
     align-content: center;
     align-items: center;
     text-align: center;
@@ -58,11 +58,11 @@ body{
 
     position: fixed; 
     top: 1%;
-    left: 25vw;
+    left: 25dvw;
     
 
-    width: 50vw; 
-    height: 8vh; 
+    width: 50dvw; 
+    height: 8dvh; 
     
     z-index: 1000; 
 
@@ -72,7 +72,7 @@ body{
     backdrop-filter: blur(8px);
 
 
-    font-size: clamp(1.2rem, 2.2vw, 2.5rem);
+    font-size: clamp(1.2rem, 2.2dvw, 2.5rem);
     color: var(--headerColor);
     box-shadow: 10px 25px 20px rgba(0, 0, 0, 0.15);
 
@@ -115,8 +115,8 @@ span a:focus{
 }
 
 .headerIcon{
-  height: clamp(24px, 2vh, 38px);
-  width: clamp(24px, 2vw, 38px);
+  height: clamp(24px, 2dvh, 38px);
+  width: clamp(24px, 2dvw, 38px);
   max-width: 100%;
   object-fit: contain;
   filter: invert(1) brightness(1.2) saturate(1.3);
@@ -133,7 +133,7 @@ span a:focus{
 
 .headerSub{
 
-  font-size: clamp(0.9rem, 1vw, 1.4rem);
+  font-size: clamp(0.9rem, 1dvw, 1.4rem);
 
 }
 
@@ -147,8 +147,8 @@ img{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
 
 
     background-image: var(--openBg);
@@ -180,13 +180,13 @@ img{
 }
 
 .content{
-    width: 100vw;
+    width: 100dvw;
     margin: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    min-height: 100vh;
+    min-height: 100dvh;
 
     background-image: var(--gradientBg);
 
@@ -213,8 +213,8 @@ img{
     align-content: center;
     align-self: center;
 
-    width: 100vw;
-    min-height: 100vh;
+    width: 100dvw;
+    min-height: 100dvh;
 }
 
 .projects{
@@ -226,7 +226,7 @@ img{
     text-align: center;
     align-content: center;
     align-self: center;
-    width: 100vw;
+    width: 100dvw;
 
 }
 
@@ -240,7 +240,7 @@ img{
     align-content: center;
     align-self: center;
 
-    width: 100vw;
+    width: 100dvw;
 
 
 }
@@ -260,11 +260,11 @@ img{
 
     margin: auto;
     min-width: fit-content;
-    width: 30vw;
+    width: 30dvw;
     padding: 20px;
 
-    margin-top: 10vh;
-    height: 10vh;
+    margin-top: 10dvh;
+    height: 10dvh;
 
 
     border: var(--generalBorder);
@@ -283,12 +283,12 @@ img{
     display: flex;
     flex-direction: row;
 
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     padding: 10px;
     margin:0;
 
-    font-size: clamp(1rem, 2.2vw, 2rem);
+    font-size: clamp(1rem, 2.2dvw, 2rem);
     color: var(--titlesColor);
     text-align: center;
     hyphens: auto;
@@ -299,7 +299,7 @@ img{
 }
 
 .first{
-  height: 80vh;
+  height: 80dvh;
 }
 
 .description{
@@ -322,7 +322,7 @@ img{
 
 
     padding: 20px;
-    width: clamp(40vw, 2.2vw, 45vw);
+    width: clamp(40dvw, 2.2dvw, 45dvw);
 
     position: relative;
     z-index: 10;
@@ -374,7 +374,7 @@ img{
 .year::before {
   content: "";
   display: inline-block;
-  width: clamp(4rem, 10vw, 8rem);
+  width: clamp(4rem, 10dvw, 8rem);
   height: 2px;
   width:25%;
   background: linear-gradient(90deg, transparent, var(--lineColor), transparent);
@@ -384,16 +384,16 @@ img{
 .year::after {
   content: "";
   display: inline-block;
-  width: clamp(4rem, 10vw, 8rem);
+  width: clamp(4rem, 10dvw, 8rem);
   height: 2px;
   width:25%;
   background: linear-gradient(90deg, transparent, var(--lineColor), transparent);
 }
 .image{
     
-    width: clamp(30vw, 2.2vw, 40vw);
+    width: clamp(30dvw, 2.2dvw, 40dvw);
     height: auto;
-    max-height: 40vh;
+    max-height: 40dvh;
     border-radius: 12px;
     margin:auto;
 
@@ -405,7 +405,7 @@ img{
     color: var(--nameColor);
     text-align: center;
     hyphens: none;
-    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    font-size: clamp(1.5rem, 2.2dvw, 2rem);
 }
 
 .subjects{
@@ -419,7 +419,7 @@ img{
 
     gap: 10px;
 
-    font-size: clamp(0.75rem, 2.2vw, 1rem);
+    font-size: clamp(0.75rem, 2.2dvw, 1rem);
     padding-bottom: 0 !important;
 }
 
@@ -435,13 +435,13 @@ img{
 
 
     background-color: var(--pillBg);
-    font-size: clamp(0.5rem, 5vw, 1rem);
+    font-size: clamp(0.5rem, 5dvw, 1rem);
     color: var(--pillTextColor);
     box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.12);
 }
 
 .descriptText{
-    font-size: clamp(0.9rem, 5vw, 1.25rem);
+    font-size: clamp(0.9rem, 5dvw, 1.25rem);
     text-align: left !important;
     padding: 5%;
     word-break: normal;
@@ -460,10 +460,10 @@ img{
   margin: auto;
 
 
-  width: 50vw;
+  width: 50dvw;
   height: fit-content;
-  padding: 5vh 0vh;
-  margin-top:10vh;
+  padding: 5dvh 0dvh;
+  margin-top:10dvh;
 
 
   background: rgba(0, 0, 0, 0.232);
@@ -546,7 +546,7 @@ img{
 }
 #contactForm textarea{
   font-size: 1rem;
-  height: 25vh;
+  height: 25dvh;
 
   color: var(--titlesColor);
 
@@ -586,7 +586,7 @@ img{
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 5vh;
+  margin-bottom: 5dvh;
 
 
 
@@ -602,10 +602,10 @@ img{
 @media only screen and (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
 
   .header{
-    left: 10vw;
-    width: 80vw;
+    left: 10dvw;
+    width: 80dvw;
     top: 1%;
-    height: 7vh;
+    height: 7dvh;
     padding: 0.5rem 0.8rem;
   }
 
@@ -622,11 +622,11 @@ img{
 
   .subSection{
     width: 30%;
-    font-size: clamp(2rem, 2.5vw, 3rem);
+    font-size: clamp(2rem, 2.5dvw, 3rem);
   }
 
   .contactContainer{
-    width: 60vw;
+    width: 60dvw;
   }
 
   .image{
@@ -650,12 +650,12 @@ img{
       left: 49.5%;
       bottom: max(0.75rem, env(safe-area-inset-bottom));
       transform: translateX(-50%);
-      width: 80vw;
+      width: 80dvw;
       height: auto;
       min-height: 3.5rem;
       padding: 0.6rem 0.7rem;
       justify-content: space-around;
-      gap: clamp(0.35rem, 2.5vw, 0.8rem);
+      gap: clamp(0.35rem, 2.5dvw, 0.8rem);
       border-radius: 24px;
       box-sizing: border-box;
     }
@@ -674,7 +674,7 @@ img{
     }
 
     .headerSub{
-      font-size: clamp(1.2rem, 2.2vw, 2.5rem);
+      font-size: clamp(1.2rem, 2.2dvw, 2.5rem);
     }
 
     .container { 
@@ -699,17 +699,17 @@ img{
     .subSection {
       width: 40%;
       padding: 0px 20px;
-      font-size: clamp(2.5rem, 3vw, 3rem);
-      height: 10vh; 
+      font-size: clamp(2.5rem, 3dvw, 3rem);
+      height: 10dvh; 
       margin: 0;
       position: relative;
-      top: 2.5vh;
+      top: 2.5dvh;
 
     }
 
     .contentRight {
-      height: 100vh;
-      padding-top: 5vh;
+      height: 100dvh;
+      padding-top: 5dvh;
       display: flex;
       flex-direction: column; 
       justify-content: center;
@@ -717,14 +717,14 @@ img{
     }
 
     .first { 
-      height: 85vh;
-      margin-bottom: 5vh;
+      height: 85dvh;
+      margin-bottom: 5dvh;
     }
 
     .first .carousel-container{
       max-height: fit-content;
       position: relative;
-      top: 3vh;
+      top: 3dvh;
     }
 
     .description, .imageContainer { 
@@ -749,9 +749,9 @@ img{
 
     }
     .descriptionContent { 
-      width: 80vw;
+      width: 80dvw;
       padding: 16px;
-      margin-bottom: 2.5vh;
+      margin-bottom: 2.5dvh;
     }
 
 
@@ -767,7 +767,7 @@ img{
 
     .descriptText { 
       text-align: left; 
-      font-size: clamp(1rem, 2.2vw, 2rem); 
+      font-size: clamp(1rem, 2.2dvw, 2rem); 
       word-break: normal;
       overflow-wrap: normal;
       hyphens: none;
@@ -777,7 +777,7 @@ img{
       padding: 0 !important;
     }
     .subjects span{
-      font-size: clamp(1.2rem, 1.5vw, 1.5rem); 
+      font-size: clamp(1.2rem, 1.5dvw, 1.5rem); 
     }
 
     .image { 
@@ -786,7 +786,7 @@ img{
 
     .contact{
 
-      height: 100vh;
+      height: 100dvh;
     }
     .contactContainer{ 
       width: 90%;
@@ -804,7 +804,7 @@ img{
     }
 
     #contactForm input, #contactForm textarea { 
-      width: 80vw;
+      width: 80dvw;
       padding-left: 20px;
     }
 
@@ -823,7 +823,7 @@ img{
     }
 
     .carousel-container { 
-      width: 80vw !important; 
+      width: 80dvw !important; 
     }
     .carousel { 
       width: min(100%, 400px); 
@@ -843,7 +843,7 @@ img{
       padding: 16px; 
       border-radius: 12px; 
       height: auto; 
-      max-height: calc(100vh - 2rem); 
+      max-height: calc(100dvh - 2rem); 
       box-sizing: border-box; 
       background-color: transparent; 
     }
@@ -854,14 +854,14 @@ img{
       margin: 0.5rem auto; 
       padding: 8px; 
       border-radius: 12px; 
-      height: calc(100vh - 2rem); 
-      max-height: calc(100vh - 2rem); 
+      height: calc(100dvh - 2rem); 
+      max-height: calc(100dvh - 2rem); 
     }
 
     .image-modal-content .carousel_image { 
       width: 100%; 
       height: auto; 
-      max-height: calc(100vh - 8rem); 
+      max-height: calc(100dvh - 8rem); 
       object-fit: contain; 
       object-position: top; 
     }
@@ -1127,7 +1127,7 @@ img{
     border: var(--generalBorder);
     border-radius: 24px;
     padding: 0px;
-    width: 40vw;
+    width: 40dvw;
     max-height: fit-content;
     box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.25);
 }
@@ -1191,7 +1191,7 @@ h3 {
   align-items: center;
   justify-content: center;
   background-color: var(--inputBg);
-  margin: 5vh auto;
+  margin: 5dvh auto;
   padding: 40px;
   border: var(--generalBorder);
   border-radius: 24px;
@@ -1259,8 +1259,8 @@ h3 {
 .image-modal-content {
   display: flex;
   flex-direction: column;
-  height: 80vh; 
-  width: 90vw; 
+  height: 80dvh; 
+  width: 90ddvw; 
   max-width: 1200px;
 
 }
@@ -1385,12 +1385,12 @@ button.alatsi-regular {
       left: 49.5%;
       bottom: max(0.75rem, env(safe-area-inset-bottom));
       transform: translateX(-50%);
-      width: min(96vw, 26rem);
+      width: min(96dvw, 26rem);
       height: auto;
       min-height: 3.5rem;
       padding: 0.6rem 0.7rem;
       justify-content: space-around;
-      gap: clamp(0.35rem, 2.5vw, 0.8rem);
+      gap: clamp(0.35rem, 2.5dvw, 0.8rem);
       border-radius: 24px;
       box-sizing: border-box;
     }
@@ -1430,8 +1430,8 @@ button.alatsi-regular {
     .subSection {
       width: 60%;
       font-size: 2rem;
-      height: 10vh; 
-      margin-top: 2.5vh;
+      height: 10dvh; 
+      margin-top: 2.5dvh;
 
 
     }
@@ -1441,22 +1441,22 @@ button.alatsi-regular {
     }
 
     .contentRight {
-      height: 100vh;
+      height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start !important;
       gap: 24px;
       position: relative;
-      top: 10vh;
+      top: 10dvh;
       padding: 0;
     }
 
 
     .first { 
 
-      height: 85vh;
+      height: 85dvh;
       position: relative;
-      top: 5vh;
+      top: 5dvh;
     }
 
     .description{
@@ -1476,7 +1476,7 @@ button.alatsi-regular {
     .imageContainer {
         order: 2;
         height: fit-content;
-        max-height: 30vh;
+        max-height: 30dvh;
         width: 80%;
     }
 
@@ -1495,12 +1495,12 @@ button.alatsi-regular {
 
     .school{
 
-      font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+      font-size: clamp(1.2rem, 2.2dvw, 1.4rem);
 
     }
     .descriptText{
       text-align: left;
-      font-size: clamp(0.75rem, 2.2vw, 1rem);
+      font-size: clamp(0.75rem, 2.2dvw, 1rem);
       word-break: normal;
       overflow-wrap: normal;
       hyphens: none;
@@ -1513,7 +1513,7 @@ button.alatsi-regular {
 
 
     .contact{
-      height: 100vh;
+      height: 100dvh;
     }
 
     .contactContainer{
@@ -1526,7 +1526,7 @@ button.alatsi-regular {
 
     #contactForm input,
     #contactForm textarea {
-        width: 80vw;
+        width: 80dvw;
         max-width: 90%;
         position: relative;
         left: 5%;
@@ -1534,7 +1534,7 @@ button.alatsi-regular {
     }
 
     #contactForm button {
-        width: 50vw;
+        width: 50dvw;
 
     }
 
@@ -1571,7 +1571,7 @@ button.alatsi-regular {
       padding: 16px;
       border-radius: 12px;
       height: auto;
-      max-height: calc(100vh - 2rem);
+      max-height: calc(100dvh - 2rem);
       box-sizing: border-box;
     }
 
@@ -1581,20 +1581,20 @@ button.alatsi-regular {
       margin: 0.5rem auto;
       padding: 8px;
       border-radius: 12px;
-      height: calc(100vh - 2rem);
-      max-height: calc(100vh - 2rem);
+      height: calc(100dvh - 2rem);
+      max-height: calc(100dvh - 2rem);
     }
 
     .image-modal-content .carousel-container {
       height: 100%;
       width: 100%;
-      max-height: 30vh;
+      max-height: 30dvh;
     }
 
     .image-modal-content .carousel_image {
       width: 100%;
       height: auto;
-      max-height: calc(100vh - 8rem);
+      max-height: calc(100dvh - 8rem);
       object-fit: contain;
       object-position: top;
     }

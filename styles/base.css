@@ -128,7 +128,7 @@ span a:focus{
   border-radius: 12px;
   background-color: var(--selectedSectionBg);
   transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  box-shadow: 5px 8px 18px rgba(0, 0, 0, 0.323);
 }
 
 .headerSub{
@@ -213,7 +213,7 @@ img{
     align-content: center;
     align-self: center;
 
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
 }
 
@@ -226,7 +226,7 @@ img{
     text-align: center;
     align-content: center;
     align-self: center;
-    width: 100%;
+    width: 100vw;
 
 }
 
@@ -240,7 +240,7 @@ img{
     align-content: center;
     align-self: center;
 
-    width: 100%;
+    width: 100vw;
 
 
 }
@@ -259,7 +259,8 @@ img{
 
 
     margin: auto;
-    width: 25%;
+    min-width: fit-content;
+    width: 30vw;
     padding: 20px;
 
     margin-top: 10vh;
@@ -282,13 +283,12 @@ img{
     display: flex;
     flex-direction: row;
 
-
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     padding: 10px;
     margin:0;
 
-    font-size: 2rem;
+    font-size: clamp(1rem, 2.2vw, 2rem);
     color: var(--titlesColor);
     text-align: center;
     hyphens: auto;
@@ -322,7 +322,7 @@ img{
 
 
     padding: 20px;
-    width: 70%;
+    width: clamp(40vw, 2.2vw, 45vw);
 
     position: relative;
     z-index: 10;
@@ -345,11 +345,7 @@ img{
     padding-bottom: 20px;
 
 }
-.description div:nth-last-child(1){
-    font-size: 2rem;
-    text-align: center;
-    padding-bottom: 5px;
-}
+
 
 .imageContainer{
     display: flex;
@@ -372,6 +368,7 @@ img{
   align-items: center;
   position: relative;
   gap: 0.75rem;
+  padding-bottom: 0 !important;
 }
 
 .year::before {
@@ -394,8 +391,9 @@ img{
 }
 .image{
     
-    width: 70%;
+    width: clamp(30vw, 2.2vw, 40vw);
     height: auto;
+    max-height: 40vh;
     border-radius: 12px;
     margin:auto;
 
@@ -407,6 +405,7 @@ img{
     color: var(--nameColor);
     text-align: center;
     hyphens: none;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
 }
 
 .subjects{
@@ -419,6 +418,9 @@ img{
     align-self: center;
 
     gap: 10px;
+
+    font-size: clamp(0.75rem, 2.2vw, 1rem);
+    padding-bottom: 0 !important;
 }
 
 .subjects span{
@@ -433,7 +435,7 @@ img{
 
 
     background-color: var(--pillBg);
-    font-size: clamp(0.5rem, 5vw, 1.25rem);
+    font-size: clamp(0.5rem, 5vw, 1rem);
     color: var(--pillTextColor);
     box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.12);
 }
@@ -477,7 +479,7 @@ img{
   display: flex;
   flex-direction: column;
   gap: 25px;
-
+  width: 80%;
 }
 
 #btnIcon{
@@ -600,7 +602,7 @@ img{
 @media only screen and (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
 
   .header{
-    left: 20vw;
+    left: 10vw;
     width: 80vw;
     top: 1%;
     height: 7vh;
@@ -633,7 +635,11 @@ img{
 
   .carousel { width: 380px; height: 260px; }
 
+
+
 }
+
+
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
     /* treat like mobile portrait */
@@ -684,10 +690,10 @@ img{
     }
 
     #name { 
-      font-size: 5rem; 
+      font-size: 3rem; 
     }
     #titles { 
-      font-size: 2.5rem; 
+      font-size: 2rem; 
     }
 
     .subSection {
@@ -704,13 +710,21 @@ img{
     .contentRight {
       height: 100vh;
       padding-top: 5vh;
+      display: flex;
       flex-direction: column; 
+      justify-content: center;
 
     }
 
     .first { 
       height: 85vh;
       margin-bottom: 5vh;
+    }
+
+    .first .carousel-container{
+      max-height: fit-content;
+      position: relative;
+      top: 3vh;
     }
 
     .description, .imageContainer { 
@@ -725,7 +739,6 @@ img{
 
     .imageContainer { 
       order: 2; 
-      height: 50%;
 
     }
 
@@ -736,7 +749,7 @@ img{
 
     }
     .descriptionContent { 
-      width: 80%;
+      width: 80vw;
       padding: 16px;
       margin-bottom: 2.5vh;
     }
@@ -754,18 +767,17 @@ img{
 
     .descriptText { 
       text-align: left; 
-      font-size: clamp(1.5rem, 2vw, 2rem); 
+      font-size: clamp(1rem, 2.2vw, 2rem); 
       word-break: normal;
       overflow-wrap: normal;
       hyphens: none;
     }
 
     .subjects{
-      font-size: clamp(1.6rem, 2.5vw, 2.5rem); 
+      padding: 0 !important;
     }
-
     .subjects span{
-      font-size: clamp(1.6rem, 2.5vw, 2.5rem); 
+      font-size: clamp(1.2rem, 1.5vw, 1.5rem); 
     }
 
     .image { 
@@ -784,8 +796,14 @@ img{
       height: 60px;
     }
 
+    #contactForm{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
     #contactForm input, #contactForm textarea { 
-      font-size: 1.5rem;
       width: 80vw;
       padding-left: 20px;
     }
@@ -801,16 +819,15 @@ img{
 
     #contactText { 
       width: 60%; 
-      font-size: 2rem; 
       padding: 16px; 
     }
 
     .carousel-container { 
-      width: 100%; 
+      width: 80vw !important; 
     }
     .carousel { 
       width: min(100%, 400px); 
-      height: 220px; 
+      height: fit-content; 
     }
 
     /* modal adjustments (same as mobile) */
@@ -1110,7 +1127,8 @@ img{
     border: var(--generalBorder);
     border-radius: 24px;
     padding: 0px;
-    width: 73%;
+    width: 40vw;
+    max-height: fit-content;
     box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.25);
 }
 .my-carousel {
@@ -1406,7 +1424,7 @@ button.alatsi-regular {
     }
 
     .year{
-      padding: 0;
+      padding: 0 !important;
     }
 
     .subSection {
@@ -1424,7 +1442,9 @@ button.alatsi-regular {
 
     .contentRight {
       height: 100vh;
-      flex-direction: column; 
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start !important;
       gap: 24px;
       position: relative;
       top: 10vh;
@@ -1433,13 +1453,13 @@ button.alatsi-regular {
 
 
     .first { 
+
       height: 85vh;
       position: relative;
       top: 5vh;
     }
 
-    .description,
-    .imageContainer {
+    .description{
         width: 100%;
     }
 
@@ -1466,9 +1486,7 @@ button.alatsi-regular {
 
     }
 
-    .descriptionContent div{
-      font-size: 1rem;
-    }
+
 
     .description div:nth-last-child(1){
 
@@ -1477,21 +1495,19 @@ button.alatsi-regular {
 
     .school{
 
-      font-size: 1.2rem;
+      font-size: clamp(1.2rem, 2.2vw, 1.4rem);
 
     }
-
-
     .descriptText{
       text-align: left;
-      font-size: 1.5rem;
+      font-size: clamp(0.75rem, 2.2vw, 1rem);
       word-break: normal;
       overflow-wrap: normal;
       hyphens: none;
     }
 
     .image {
-        width: min(100%, 360px);
+        width: min(100%, 420px);
         margin: 0;
     }
 
@@ -1510,7 +1526,7 @@ button.alatsi-regular {
 
     #contactForm input,
     #contactForm textarea {
-        width: 90%;
+        width: 80vw;
         max-width: 90%;
         position: relative;
         left: 5%;
@@ -1518,7 +1534,7 @@ button.alatsi-regular {
     }
 
     #contactForm button {
-        width: 70%;
+        width: 50vw;
 
     }
 

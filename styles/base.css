@@ -1412,7 +1412,7 @@ button.alatsi-regular {
         flex-direction: column;
         justify-content: center;
         width: 80%;
-        height: 20%;
+        height: fit-content;
     }
 
     #name {
@@ -1608,4 +1608,84 @@ button.alatsi-regular {
       margin-right: 0;
       transform: translateY(0);
     }
+}
+
+
+@media only screen and (max-width: 400px){
+
+  #name{
+    font-size: 2rem;
+  }
+  #title{
+    font-size: 1rem !important;
+  }
+
+  .header{
+    height: 10dvh;
+
+  }
+  .header span{
+    font-size: 0.6rem;
+    padding: 2px;
+    width: 50% ;
+  }
+  .headerIcon{
+    width: 20px;
+
+  }
+
+  .subSection{
+    font-size: 1.2rem;
+    padding: 5px;
+  }
+
+  .school{
+
+    font-size: 1rem;
+
+  }
+
+  .subjects{
+    gap: 5px;
+  }
+
+  .year{
+    font-size: 1rem;
+
+  }
+
+  .description div:nth-last-child(1){
+
+    font-size: 1rem;
+  }
+
+  .subjects span{
+    font-size: 0.7rem;
+    padding: 3px;
+
+  }
+
+
+  .carousel-container{
+    width: 80dvw;
+
+    height: 30dvh;
+
+  }
+
+  #contactText{
+    font-size: 1.2rem;
+  }
+
+  #contactForm input,
+  #contactForm textarea {
+
+      font-size: 0.75rem;
+
+    }
+
+  .carousel__indicators{
+    visibility: hidden;
+  }
+
 }

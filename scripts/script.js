@@ -403,3 +403,53 @@ window.addEventListener('touchend', (e) => {
     performScroll(direction);
   }
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Elemek kikeresése
+    const devModal = document.getElementById('devConsoleModal');
+    const closeBtn = document.querySelector('.close-dev');
+    const themeSelector = document.getElementById('themeSelector');
+
+
+    if (!devModal) {
+        console.warn('Fejlesztői konzol HTML eleme nem található az oldalon.');
+        return; 
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.altKey && event.key === 'F6') {
+            event.preventDefault(); 
+            devModal.style.display = 'block'; 
+        }
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            devModal.style.display = 'none';
+        });
+    }
+    
+    window.addEventListener('click', (event) => {
+        if (event.target === devModal) {
+            devModal.style.display = 'none';
+        }
+    });
+
+    if (themeSelector) {
+        themeSelector.addEventListener('change', (event) => {
+            const selectedValue = event.target.value;
+
+            if (selectedValue === 'auto') {
+                if (typeof loadSeasonalStylesheet === 'function' && typeof getCurrentSeason === 'function') {
+                    loadSeasonalStylesheet(getCurrentSeason());
+                }
+            } else {
+                if (typeof loadSeasonalStylesheet === 'function') {
+                    loadSeasonalStylesheet(selectedValue);
+                }
+            }
+        });
+    }
+});
